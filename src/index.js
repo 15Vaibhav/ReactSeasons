@@ -1,5 +1,8 @@
 import ReactDOM from 'react-dom'
 import React, { Component } from 'react'
+import SeaSonDisplay from './seaSonDisplay'
+import Spinner from './spinner'
+
 
 export class App extends Component {
     constructor(props) {
@@ -22,11 +25,11 @@ export class App extends Component {
     }
     render() {
         if (this.state.lat && !this.state.err)
-            return (<h2>Latitude:{this.state.lat}</h2>)
+            return (<SeaSonDisplay lat={this.state.lat}/>)
         else if (!this.state.lat && this.state.err)
             return (<h2>Latitude:{this.state.err}</h2>)
-        else 
-            return(<h2>Loading...</h2>)
+
+            return(<Spinner message="Please Allow Location Access."/>)
     }
 }
 
